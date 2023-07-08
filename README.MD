@@ -55,3 +55,6 @@ docker-compose exec backend sh
 
 python manage.py startapp products
 
+python manage.py makemigrations
+
+python manage.py migration
