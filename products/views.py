@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -23,3 +24,11 @@ class ProductViewSet(viewsets.ViewSet):
 
     def destroy(self, request, pk=None): #/api/products/<str:id>
         pass
+
+# class UserAPIView(APIView):
+#     def get(self, _):
+#         user = User.objects.all()
+#         user = random.choice(users)
+#         return Response({
+#             'id': user.id
+#         })
