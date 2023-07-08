@@ -1,4 +1,5 @@
 // Installation Process
+If it does not work for permission use "sudo" !
 
 # Python Installaion
 
@@ -39,4 +40,18 @@ django-admin startproject admin . // Note the trailing '.' character django-admi
 
 # Docker-compose Commands [use sudo if needed]
 
-docker-compose up
+docker-compose up -d  // -d for running in the background 
+
+docker-compose ps // list
+
+docker-compose down //down all the containers
+
+# Go inside the docker container
+
+docker-compose exec backend sh
+
+// Inside the container we can use any commands
+// To create a new app 'products' use cmd
+
+python manage.py startapp products
+
