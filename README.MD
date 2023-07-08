@@ -58,3 +58,15 @@ python manage.py startapp products
 python manage.py makemigrations
 
 python manage.py migration
+
+# workflow
+
+add serializer.py (if needed)
+
+add fields to models.py
+
+makemigrations and migrate
+
+add views.py with CRUD functionalities
+
+add urls.py URL paths
