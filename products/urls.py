@@ -1,16 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from .views import ProductViewSet, UserAPIView
+from .views import ProductAPIView
 
 urlpatterns = [
-    path('products', ProductViewSet.as_view({
-        'get': 'list',
-        'post': 'create'
-    })),
-     path('products/<str:pk>', ProductViewSet.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'delete': 'destroy'
-    })),
+    path('products', ProductAPIView.as_view()),
+    path('products/<str:pk>', ProductAPIView.as_view()),
     # path('user', UserAPIView.as_view())
 ]
