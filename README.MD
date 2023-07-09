@@ -1,6 +1,9 @@
 // Installation Process
 If it does not work for permission use "sudo" !
 
+// Docker version: 4.2.3
+// Python 3.10.6
+
 # Python Installaion
 
 https://serverspace.io/support/help/install-python-latest-version-on-ubuntu-20-04/
