@@ -61,3 +61,7 @@ python manage.py startapp products
 python manage.py makemigrations
 
 python manage.py migration
+
+# Install Postman to check API (not needed in production server)
+
+sudo snap install postman
