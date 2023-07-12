@@ -75,3 +75,5 @@ Copy the AMPQ URI (like amqps://sxhupzyl:***@armadillo.rmq.cloudamqp.com/sxhupzy
 
 My URL:
 amqps://sxhupzyl:6qwtiY5A6CJKv3PTVQY651zRzHAb5nib@armadillo.rmq.cloudamqp.com/sxhupzyl
+
+Use ENV File in docker-compose/ docker/ and use model  (Pending)

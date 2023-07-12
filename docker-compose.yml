@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - RABBITMQ_URI=value
 
     ports:
       - 8000:8000
