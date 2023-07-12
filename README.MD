@@ -65,3 +65,13 @@ python manage.py migration
 # Install Postman to check API (not needed in production server)
 
 sudo snap install postman
+
+# RabbitMQ configuration and installation (CloudAMPQ)
+
+Log in to CloudAMPQ
+Create a team and create a (free tier) instance in it
+Go into the instance
+Copy the AMPQ URI (like amqps://sxhupzyl:***@armadillo.rmq.cloudamqp.com/sxhupzyl) 
+
+My URL:
+amqps://sxhupzyl:6qwtiY5A6CJKv3PTVQY651zRzHAb5nib@armadillo.rmq.cloudamqp.com/sxhupzyl
