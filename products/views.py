@@ -2,6 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .producer import publish
+
 from .serializers import ProductSerializer
 from .models import Product, User
 import random
@@ -22,6 +24,7 @@ class ProductAPIView(APIView):
         serializer = ProductSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        publish('product_created', serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def put(self, request, pk=None):
@@ -29,11 +32,13 @@ class ProductAPIView(APIView):
         serializer = ProductSerializer(product, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        publish('product_updated', serializer.data)
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def delete(self, request, pk=None):
         product = self.get_object(pk)
         product.delete()
+        publish('product_deleted', pk)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def get_object(self, pk):
