@@ -6,7 +6,11 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 
-
 def publish(method, body):
-    properties = pika.BasicProperties(method)
-    channel.basic_publish(exchange='', routing_key='main', body=json.dumps(body))
+    properties = pika.BasicProperties(content_type='application/json',
+            content_encoding='utf-8',
+            headers={'key': 'value'},
+            delivery_mode = 1,
+            )
+    message = {'method': method, 'body': body}
+    channel.basic_publish(exchange='', routing_key='main', body=json.dumps(message), properties=properties)
