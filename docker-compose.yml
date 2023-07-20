@@ -1,26 +1,31 @@
-version: "3"
+version: "3.9"
+
 services:
-  backend:
+  django:
     build:
       context: .
       dockerfile: Dockerfile
-
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
       - .:/app
     tty: true
     command: ./manage.py runserver 0:8000
     depends_on:
       - db
+    networks:
+      - my_network
   
   queue:
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
     command: 'python -u consumer.py'
     depends_on:
       - db
+    networks:
+      - my_network
 
   db:
     image: mysql:8.0
@@ -28,10 +33,15 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: admin
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - .dbdata:/var/lib/mysql
     ports:
-      - 33066:3306
+      - "33066:3306"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external:
+      name: my_shared_network

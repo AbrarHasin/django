@@ -1,3 +1,9 @@
+# # Clone inside a folder named flask:
+Why it is needed. Because Docker-compose creates service names like: "parent.folder.name"_"service.name" 
+So django service/host name will be named "flask_flask"
+and will use "http://flask_flask:8001" in other container code
+
+
 // Installation Process
 If it does not work for permission use "sudo" !
 
@@ -77,3 +83,17 @@ My URL:
 amqps://sxhupzyl:6qwtiY5A6CJKv3PTVQY651zRzHAb5nib@armadillo.rmq.cloudamqp.com/sxhupzyl
 
 Use ENV File in docker-compose/ docker/ and use model  (Pending)
+
+# Create the Docker network:
+Before running the containers, we need to create the external network (my_network) that will be shared by both the "admin" and "main" folders.\
+
+docker network create my_network
+
+to delete:
+
+docker network rm my_network
+
+# first run django docker compose then flask docker compose
+
+# Check which containers are running under the same network 
+docker ps --filter "network=my_network"
