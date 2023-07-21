@@ -43,9 +43,18 @@ pip install djangorestframework
 
 export PATH="/bin/myscripts:$PATH" (for warning to add path)
 
-# Set up a new project with a single application
+# Set up a new project with a single application (needed only for creation of project)
 
 django-admin startproject admin . // Note the trailing '.' character django-admin startproject [project_name][directory]
+
+# Create the Docker network:
+Before running the containers, we need to create the external network (my_network) that will be shared by both the "admin" and "main" folders.\
+
+docker network create my_network
+
+to delete:
+
+docker network rm my_shared_network
 
 # Docker-compose Commands [use sudo if needed]
 
@@ -57,7 +66,7 @@ docker-compose down //down all the containers
 
 # Go inside the docker container
 
-docker-compose exec backend sh
+docker-compose exec django sh
 
 // Inside the container we can use any commands
 // To create a new app 'products' use cmd
@@ -66,7 +75,9 @@ python manage.py startapp products
 
 python manage.py makemigrations
 
-python manage.py migration
+python manage.py migrate
+
+# After this project is up and running
 
 # Install Postman to check API (not needed in production server)
 
@@ -84,16 +95,7 @@ amqps://sxhupzyl:6qwtiY5A6CJKv3PTVQY651zRzHAb5nib@armadillo.rmq.cloudamqp.com/sx
 
 Use ENV File in docker-compose/ docker/ and use model  (Pending)
 
-# Create the Docker network:
-Before running the containers, we need to create the external network (my_network) that will be shared by both the "admin" and "main" folders.\
-
-docker network create my_network
-
-to delete:
-
-docker network rm my_network
-
 # first run django docker compose then flask docker compose
 
 # Check which containers are running under the same network 
-docker ps --filter "network=my_network"
+docker ps --filter "network=my_shared_network"
