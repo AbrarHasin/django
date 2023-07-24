@@ -50,7 +50,7 @@ django-admin startproject admin . // Note the trailing '.' character django-admi
 # Create the Docker network:
 Before running the containers, we need to create the external network (my_network) that will be shared by both the "admin" and "main" folders.\
 
-docker network create my_network
+docker network create my_shared_network
 
 to delete:
 
