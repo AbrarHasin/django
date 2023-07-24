@@ -54,7 +54,7 @@ docker network create my_network
 
 to delete:
 
-docker network rm my_shared_network
+docker network rm my_network
 
 # Docker-compose Commands [use sudo if needed]
 
